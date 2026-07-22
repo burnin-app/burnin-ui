@@ -5,6 +5,10 @@ import Search from "./Search.svelte";
 import AlarmBellRing from "./AlarmBellRing.svelte";
 import Home from "./Home.svelte";
 import LayoutSideBarRight from "./LayoutSideBarRight.svelte";
+import TimelineRoadMapHorizontal from "./TimelineRoadMapHorizontal.svelte";
+import PhotoLib from "./PhotoLib.svelte";
+import PlusNew from "./PlusNew.svelte";
+import FolderOpen from "./FolderOpen.svelte";
 
 export const Icons = {
   ArrowUp,
@@ -13,7 +17,16 @@ export const Icons = {
   Search,
   AlarmBellRing,
   Home,
-  LayoutSideBarRight
+  LayoutSideBarRight,
+  TimelineRoadMapHorizontal,
+  PhotoLib,
+  PlusNew,
+  FolderOpen,
 };
 
-export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing" | "Home" | "LayoutSideBarRight";
+export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing" | "Home" | "LayoutSideBarRight" |
+  "TimelineRoadMapHorizontal"
+  | "PhotoLib"
+  | "PlusNew"
+  | "FolderOpen"
+  ;

@@ -11,7 +11,11 @@
         Search: Icons.Search,
         AlarmBellRing: Icons.AlarmBellRing,
         Home: Icons.Home,
-        LayoutSideBarRight: Icons.LayoutSideBarRight
+        LayoutSideBarRight: Icons.LayoutSideBarRight,
+        TimelineHorizontal: Icons.TimelineRoadMapHorizontal,
+        PhotoLib: Icons.PhotoLib,
+        PlusNew: Icons.PlusNew,
+        FolderOpen: Icons.FolderOpen,
     };
 
     interface IconProps extends SvgIconProp {

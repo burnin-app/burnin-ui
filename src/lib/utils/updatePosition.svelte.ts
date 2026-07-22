@@ -8,30 +8,12 @@ import {
     type Placement
 } from "@floating-ui/dom";
 
-// export async function updateMenuPosition(
-//   trigger: HTMLDivElement,
-//   content: HTMLDivElement,
-// ) {
-//   // console.log("trigger", trigger);
-//   // console.log("content", content);
-
-//   computePosition(trigger, content, {
-//     placement: "bottom-start",
-//     middleware: [flip(), shift({ padding: 8 })],
-//   }).then(({ x, y }) => {
-//     Object.assign(content.style, {
-//       left: `${x}px`,
-//       top: `${y}px`,
-//     });
-//   });
-// }
-
-
 
 interface MenuPositionOptions {
     placement?: Placement;
     matchTriggerWidth?: boolean;
     offset?: number;
+    padding?: number;
 }
 
 export function updateMenuPosition(
@@ -40,7 +22,8 @@ export function updateMenuPosition(
     {
         placement = "bottom-start",
         matchTriggerWidth = false,
-        offset: offsetValue = 1
+        offset: offsetValue = 1,
+          padding: paddingValue = 4
     }: MenuPositionOptions = {}
 ) {
     return autoUpdate(trigger, content, async () => {
@@ -49,7 +32,7 @@ export function updateMenuPosition(
             middleware: [
                 offset(offsetValue),
                 flip(),
-                shift({ padding: 4 }),
+                shift({ padding: paddingValue }),
 
                 ...(matchTriggerWidth
                     ? [

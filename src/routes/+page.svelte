@@ -5,13 +5,17 @@
         document.documentElement.setAttribute("data-theme", "dark");
     });
 
-    import {IcoBtn, List} from "$lib";
+    import {Dropdown, IcoBtn, List, Menu} from "$lib";
 
     let items = $state(["Hello", "Check", "Loser", "Chekcer"]);
 
 </script>
 <div class="data">
-    <IcoBtn icon="LayoutSideBarRight" size={33} color="red" hoveredColor="pink"/>
+    <Dropdown.Root>
+    <IcoBtn icon="LayoutSideBarRight" size={33} color="red" hoveredColor="pink" tooltip="hello"/>
+
+    </Dropdown.Root>
+    <IcoBtn icon="PhotoLib" size={33}  hoveredColor="pink"/>
 
     <List.Root>
         <List.Header

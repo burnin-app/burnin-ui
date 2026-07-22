@@ -9,7 +9,7 @@
         classStyle?: string;
     }
 
-    let { children, id , style = ""}: ItemProps = $props();
+    let { children, id , classStyle = ""}: ItemProps = $props();
 
     let context: ListContextProps = getListContext();
 
@@ -20,7 +20,7 @@
 
 <button
     class="item-wrapper"
-    style={style}
+    style={classStyle}
     class:selected={context.selected_id === id}
     onclick={handleItemClick}
 >

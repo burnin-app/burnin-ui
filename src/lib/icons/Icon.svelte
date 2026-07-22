@@ -9,6 +9,9 @@
         Plus: Icons.Plus,
         Close: Icons.Close,
         Search: Icons.Search,
+        AlarmBellRing: Icons.AlarmBellRing,
+        Home: Icons.Home,
+        LayoutSideBarRight: Icons.LayoutSideBarRight
     };
 
     interface IconProps extends SvgIconProp {

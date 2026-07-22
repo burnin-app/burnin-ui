@@ -1,10 +1,13 @@
 @use "./themes/katana.scss";
 @use "./themes/light.scss";
+@use "./themes/dark.scss";
 
 :root {
     --menu-z-index: 9999;
     --tab-height: 28px;
+
 }
+
 
 *,
 *::before,

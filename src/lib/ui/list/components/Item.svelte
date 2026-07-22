@@ -6,9 +6,10 @@
     interface ItemProps {
         children: Snippet;
         id: string;
+        classStyle?: string;
     }
 
-    let { children, id }: ItemProps = $props();
+    let { children, id , style = ""}: ItemProps = $props();
 
     let context: ListContextProps = getListContext();
 
@@ -19,6 +20,7 @@
 
 <button
     class="item-wrapper"
+    style={style}
     class:selected={context.selected_id === id}
     onclick={handleItemClick}
 >
@@ -35,57 +37,33 @@
         display: flex;
         align-items: center;
         padding: 0px 10px;
-        background-color: #333333;
+        background-color: var(--list-bg-color);
+
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
 
         width: 100%;
         box-sizing: border-box;
         padding: 0 10px;
 
         &:hover {
-            background-color: #555;
+            background-color: var(--list-bg-hover);
         }
         &.selected {
-            background-color: #4d4d4d;
+            background-color: var(--list-bg-selected);
         }
     }
 
     .item-wrapper:nth-child(odd) {
-        background-color: #383838;
+        background-color: var(--list-nth-bg-color);
         &:hover {
-            background-color: #555;
+            background-color: var(--list-nth-bg-hover);
         }
 
         &.selected {
-            background-color: #4d4d4d;
+            background-color: var(--list-bg-selected);
         }
     }
-    /*
-    .item-wrapper {
-        width: 100%;
-        height: 24px;
 
-        display: flex;
-        align-items: center;
-
-        padding: 0 10px;
-        box-sizing: border-box;
-
-        border: none;
-        background: #333333;
-        color: var(--text-color);
-
-        cursor: pointer;
-    }
-
-    .item-wrapper:nth-child(odd) {
-        background: #383838;
-    }
-
-    .item-wrapper:hover {
-        background: #555;
-    }
-
-    .item-wrapper.selected {
-        background: #4d4d4d;
-    } */
 </style>

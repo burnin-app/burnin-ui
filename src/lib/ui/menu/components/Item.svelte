@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { Snippet } from "svelte";
-    import { getMenuContext } from "$burnin_ui/context";
+    import { getMenuContext } from "../../../context";
 
     export interface MenuItemProps {
         children: Snippet;

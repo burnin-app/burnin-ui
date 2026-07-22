@@ -1,9 +1,12 @@
 import adapter from '@sveltejs/adapter-auto';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
+import svgLoader from "vite-svg-loader";
 
 export default defineConfig({
 	plugins: [
+    svgLoader(
+   ),
 		sveltekit({
 			compilerOptions: {
 				// Force runes mode for the project, except for libraries. Can be removed in svelte 6.

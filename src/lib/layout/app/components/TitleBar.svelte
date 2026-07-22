@@ -7,10 +7,11 @@
         height?: number;
         title: string;
         os: string;
+        iconsize?: number
         onClose?: () => void;
     }
 
-    let { children, os, onClose, title, height = 30 }: TitlebarProps = $props();
+    let { children, os, onClose, title, height = 30 , iconsize = 30}: TitlebarProps = $props();
 
     function test() {
         console.log("test");
@@ -42,7 +43,7 @@
     <div class="titlebar-btn-wrapper">
         <IcoBtn
             icon="ArrowUp"
-            size={30}
+            size={iconsize}
             onclick={test}
             border={false}
             backgroundColor="transparent"
@@ -51,7 +52,7 @@
         />
         <IcoBtn
             icon="Close"
-            size={30}
+            size={iconsize}
             onclick={() => onClose?.()}
             backgroundColor="transparent"
             hoveredBgColor="#e81120"
@@ -68,6 +69,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 10px;
+        border-bottom: 1px solid var(--border-color);
 
         .title {
             font-size: 14px;

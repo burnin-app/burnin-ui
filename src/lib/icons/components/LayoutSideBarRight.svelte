@@ -8,12 +8,16 @@
 <IcoBase {...rest}>
     <path
         fill={fill ? color : "none"}
-        stroke={fill ? "none" : color}
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
         stroke-width={strokeWidth}
-        d="M18 6 6 18"></path>
+        d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2H6a2 2 0 0 1 -2 -2z"></path>
     <path
         fill={fill ? color : "none"}
-        stroke={fill ? "none" : color}
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
         stroke-width={strokeWidth}
-        d="m6 6 12 12"></path>
+        d="m15 4 0 16"></path>
 </IcoBase>

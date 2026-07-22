@@ -1,6 +1,6 @@
-[data-theme="katana"] {
-    --bg-color: #262626;
-    --surface-color: #242424;
+[data-theme="dark"] {
+    --bg-color: #0a0a0a;
+    --surface-color: #0a0a0a;
     --text-color: #cdcdcd;
     --text-color-dim: #7d7d7d;
     --light-border-color: #3b3b3b;
@@ -25,18 +25,22 @@
     --tab-header-padding: 6px 18px;
     --tab-hover-bg: #4a4a4a;
 
+    // ICON
+    --icon-bg: var(--bg-color);
+    --icon-bg-hovered: #202020;
+
     // MENU
     --menu-item-height: 26px;
     --menu-item-padding: 10px;
     --menu-min-width: 200px;
 
     // LIST ITEM
-    --list-bg-color: #333333;
-    --list-bg-hover: #555;
-    --list-bg-selected: #4d4d4d;
-    --list-nth-bg-color: #383838;
-    --list-nth-bg-hover:#555;
-    --list-border-color: var(--border-color);
+    --list-bg-color: var(--bg-color);
+    --list-bg-hover: #272727;
+    --list-bg-selected: #2D2D2D;
+    --list-nth-bg-color: #101010;
+    --list-nth-bg-hover:var(--list-bg-hover);
+    --list-border-color: var(--list-nth-bg-color);
 
     body {
         color: var(--text-color);

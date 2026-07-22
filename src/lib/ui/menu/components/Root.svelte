@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { getMenuContext } from "$burnin_ui/context";
-    import { globalUIState } from "$burnin_ui/globalState.svelte";
+    import { getMenuContext } from "../../../context";
+    import { globalUIState } from "../../../globalState.svelte";
     import { onDestroy, onMount, type Snippet } from "svelte";
     import { tick } from "svelte";
-    import { updateMenuPosition } from "$burnin_ui/utils";
+    import { updateMenuPosition } from "../../../utils";
 
     interface MenuProps {
         children: Snippet;

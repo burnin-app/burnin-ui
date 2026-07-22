@@ -27,7 +27,8 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
-		}
+		},
+		"./styles": "./dist/style/index.scss"
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"
@@ -46,16 +47,19 @@
 		"prettier": "^3.8.3",
 		"prettier-plugin-svelte": "^4.1.0",
 		"publint": "^0.3.21",
+		"sass-embedded": "^1.100.0",
 		"svelte": "^5.56.1",
 		"svelte-check": "^4.6.0",
 		"typescript": "^6.0.3",
 		"typescript-eslint": "^8.60.1",
-		"vite": "^8.0.16"
+		"vite": "^8.0.16",
+		"vite-svg-loader": "^5.1.1"
 	},
 	"keywords": [
 		"svelte"
 	],
 	"dependencies": {
+		"@floating-ui/dom": "^1.8.0",
 		"@thisux/sveltednd": "^0.4.1",
 		"fuzzysort": "^3.1.0",
 		"paneforge": "^1.0.2"

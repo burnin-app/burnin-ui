@@ -3,7 +3,7 @@ Submenu supports only one level down. Multiple sublevels need to be added
 -->
 <script lang="ts">
     import type { Snippet } from "svelte";
-    import { Menu } from "$burnin_ui";
+    import { Menu } from "../../../index";
     import { Root } from "..";
 
     interface SubMenuProps {

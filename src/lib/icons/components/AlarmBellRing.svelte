@@ -1,0 +1,73 @@
+<script lang="ts">
+    import type { SvgIconProp } from "../types";
+    import IcoBase from "./IcoBase.svelte";
+
+    let { fill, color, strokeWidth, ...rest }: SvgIconProp = $props();
+</script>
+
+<IcoBase {...rest}>
+    <path
+        d="M6.81399 4.26599c-1.03818 0.57651 -1.89391 1.43258 -2.47 2.471"
+        fill="none"
+        stroke={fill ? "none" : color}
+        stroke-width={strokeWidth}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    />
+    <path
+        d="M5.975 1.5c-1.0655 0.30294 -2.03591 0.87316 -2.8191 1.65653C2.3727 3.9399 1.8027 4.91043 1.5 5.976"
+        fill="none"
+        stroke={fill ? "none" : color}
+        stroke-width={strokeWidth}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    />
+    <path
+        d="M4.5 18h15"
+        fill="none"
+        stroke={fill ? "none" : color}
+        stroke-width={strokeWidth}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    />
+    <path
+        d="M19.5 18S18 16.694 18 12c0 -3.74999 -2.562 -7.06799 -6 -7.06799S6 8.25001 6 12c0 4.719 -1.5 6 -1.5 6"
+        fill="none"
+        stroke={fill ? "none" : color}
+        stroke-width={strokeWidth}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    />
+    <path
+        d="M13.5 21c0 0.3978 -0.158 0.7794 -0.4393 1.0607S12.3978 22.5 12 22.5c-0.3978 0 -0.7794 -0.158 -1.0607 -0.4393S10.5 21.3978 10.5 21"
+        fill="none"
+        stroke={fill ? "none" : color}
+        stroke-width={strokeWidth}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    />
+    <path
+        d="M12 4.932V3"
+        fill="none"
+        stroke={fill ? "none" : color}
+        stroke-width={strokeWidth}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    />
+    <path
+        d="M17.186 4.26599c0.5157 0.28793 0.9894 0.64526 1.408 1.062 0.4174 0.41831 0.7748 0.89249 1.062 1.409"
+        fill="none"
+        stroke={fill ? "none" : color}
+        stroke-width={strokeWidth}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    />
+    <path
+        d="M18.025 1.5c1.0655 0.30294 2.0359 0.87316 2.8191 1.65653 0.7832 0.78337 1.3532 1.7539 1.6559 2.81947"
+        fill="none"
+        stroke={fill ? "none" : color}
+        stroke-width={strokeWidth}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    />
+</IcoBase>

@@ -48,7 +48,7 @@
         return backgroundColor;
     });
 
-    let iconsize = $derived(size * 0.5);
+    let iconsize = $derived(size * 0.75);
 </script>
 
 <button
@@ -72,7 +72,7 @@
 <style lang="scss">
     .iconBtn-wrapper {
         border: none;
-        background-color: var(--tab-black);
+        background-color: var(--icon-bg);
         border: 0.5px solid #737373;
         border-radius: var(--border-radius);
         display: flex;
@@ -82,5 +82,9 @@
         /* width: 30px;
         height: 30px; */
         padding: 0;
+
+        &:hover{
+            background-color: var(--icon-bg-hovered);
+        }
     }
 </style>

@@ -19,11 +19,10 @@
         min-height: 0;
         width: 100%;
         height: 100%;
-        background-color: #333333;
         box-sizing: border-box;
         min-width: 0;
         padding: 2px;
-        background-color: var(--border-color);
+        background-color: var(--list-bg-color);
 
         flex: 1;
         min-height: 0;
@@ -34,8 +33,9 @@
         min-width: 0;
         overflow: auto;
         width: 100%;
-        padding: 2px;
+        padding: 1px;
         box-sizing: border-box;
+        border: none;
     }
 
     /* .content-wrapper {

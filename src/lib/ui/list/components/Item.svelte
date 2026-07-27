@@ -7,14 +7,16 @@
         children: Snippet;
         id: string;
         classStyle?: string;
+        onclick?: () => void;
     }
 
-    let { children, id , classStyle = ""}: ItemProps = $props();
+    let { children, id , classStyle = "", onclick}: ItemProps = $props();
 
     let context: ListContextProps = getListContext();
 
     function handleItemClick() {
         context.selected_id = id;
+        onclick?.();
     }
 </script>
 
@@ -36,7 +38,6 @@
         /* border-radius: var(--border-radius); */
         display: flex;
         align-items: center;
-        padding: 0px 10px;
         background-color: var(--list-bg-color);
 
         overflow: hidden;

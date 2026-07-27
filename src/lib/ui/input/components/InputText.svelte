@@ -21,10 +21,10 @@
         background-color: #373737;
         background-color: var(--tab-black);
         color: #fff;
-        width: 100%;
         display: flex;
         gap: 4px;
         width: 100%;
+        height: 100%;
         input {
             border: none;
             color: var(--primary-text-color-w2);

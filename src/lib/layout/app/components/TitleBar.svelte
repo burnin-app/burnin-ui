@@ -42,8 +42,8 @@
 {#snippet titleBarButtons(os: string)}
     <div class="titlebar-btn-wrapper">
         <IcoBtn
-            icon="ArrowUp"
-            size={iconsize}
+            icon="Box"
+            size={20}
             onclick={test}
             border={false}
             backgroundColor="transparent"
@@ -87,5 +87,8 @@
 
     .titlebar-btn-wrapper {
         display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 100%;
     }
 </style>

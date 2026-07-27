@@ -17,6 +17,7 @@
         hoveredBgColor?: string;
         border?: boolean;
         tooltip?: string;
+        strokeWidth?: number;
     }
 
     let {
@@ -28,8 +29,9 @@
         backgroundColor,
         hoveredBgColor,
         tooltip,
-        size = 20,
+        size,
         fill = false,
+        strokeWidth = 1.5,
         ...rest
     }: IcoBtnProps = $props();
 
@@ -52,7 +54,6 @@
         return backgroundColor;
     });
 
-    let iconsize = $derived(size * 0.75);
     let buttonElement: HTMLButtonElement;
     let toolTipElement: HTMLDivElement;
 
@@ -77,9 +78,10 @@
 >
     <IconI
         name={icon as IconNames}
-        size={iconsize}
+        size={size}
         {fill}
         color={output_color}
+        strokeWidth={strokeWidth}
     />
 </button>
 {#if tooltip && hovered}
@@ -99,9 +101,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 100%;
+        height: 100%;
+        width: fit-content;
 
-        /* width: 30px;
-        height: 30px; */
         padding: 0;
 
         &:hover{

@@ -9,19 +9,24 @@
     let {
         children,
         color = "#D9D9D9",
-        size = 18,
+        size,
         className,
     }: IconProps = $props();
 </script>
 
-<svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    class={className}
-    style={`color: ${color};`}
-    aria-hidden="true"
->
-    {@render children()}
-</svg>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        class={`svg ${className}`}
+        style={`
+              color:${color};
+              width:${size ? `${size}px` : "100%"};
+              height:${size ? `${size}px` : "100%"};
+          `}
+        aria-hidden="true"
+    >
+        {@render children()}
+    </svg>
+
+<style lang="scss">
+</style>

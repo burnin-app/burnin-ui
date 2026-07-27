@@ -17,5 +17,8 @@
         align-items: center;
         gap: 6px;
         white-space: nowrap;
+        width: 100%;
+        justify-content: center;
+        height: 100%;
     }
 </style>

@@ -2,7 +2,7 @@
     import type { SvgIconProp } from "../types";
     import IcoBase from "./IcoBase.svelte";
 
-    let { fill, color, strokeWidth =6.25, ...rest }: SvgIconProp = $props();
+    let { fill, color, strokeWidth =10., ...rest }: SvgIconProp = $props();
 </script>
 
 <IcoBase {...rest}>

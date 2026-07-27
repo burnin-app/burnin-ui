@@ -16,15 +16,22 @@
         PhotoLib: Icons.PhotoLib,
         PlusNew: Icons.PlusNew,
         FolderOpen: Icons.FolderOpen,
+        ArrowDownCircle: Icons.ArrowDownCircle,
+        ArrowLeft: Icons.ArrowLeft,
+        Box: Icons.Box,
+        Bin: Icons.Bin,
+        Notes: Icons.Notes,
+        Files: Icons.Files
     };
 
     interface IconProps extends SvgIconProp {
         name: IconNames;
+        strokeWidth?: number;
     }
     let {
         name,
         color = "#D9D9D9",
-        size = 18,
+        size,
         fill,
         strokeWidth = 1.5,
         ...rest

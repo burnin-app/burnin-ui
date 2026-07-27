@@ -9,6 +9,12 @@ import TimelineRoadMapHorizontal from "./TimelineRoadMapHorizontal.svelte";
 import PhotoLib from "./PhotoLib.svelte";
 import PlusNew from "./PlusNew.svelte";
 import FolderOpen from "./FolderOpen.svelte";
+import ArrowDownCircle from "./ArrowDownCircle.svelte";
+import ArrowLeft from "./ArrowLeft.svelte";
+import Box from "./Box.svelte";
+import Bin from "./Bin.svelte";
+import Notes from "./Notes.svelte";
+import Files from "./Files.svelte";
 
 export const Icons = {
   ArrowUp,
@@ -22,6 +28,12 @@ export const Icons = {
   PhotoLib,
   PlusNew,
   FolderOpen,
+  ArrowDownCircle,
+  ArrowLeft,
+  Box,
+  Bin,
+  Notes,
+  Files
 };
 
 export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing" | "Home" | "LayoutSideBarRight" |
@@ -29,4 +41,10 @@ export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing
   | "PhotoLib"
   | "PlusNew"
   | "FolderOpen"
+  | "ArrowDownCircle"
+  | "ArrowLeft"
+  | "Bin"
+  | "Box"
+  | "Notes"
+  | "Files"
   ;

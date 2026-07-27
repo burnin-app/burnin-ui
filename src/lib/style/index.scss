@@ -148,3 +148,12 @@ textarea,
 ::-webkit-scrollbar-corner {
     background: transparent;
 }
+
+
+.flex-inline{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+}

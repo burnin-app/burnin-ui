@@ -127,42 +127,35 @@
 
 <style lang="scss">
     .header-wrapper {
+        width: 100%;
+        height: 100%;
+        height: 30px;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2px 0px;
+        border-radius: var(--border-radius);
         .content {
             display: flex;
             align-items: center;
             height: var(--tab-height);
-            padding: 0px 10px;
-            justify-content: space-between;
-
-            .name {
-                font-weight: 600;
-            }
-        }
-    }
-
-    /* .header-wrapper {
-        width: 100%;
-        background-color: var(--tab-black);
-        height: var(--tab-height);
-        border-radius: var(--border-radius);
-        padding: 0px 10px;
-        display: flex;
-        font-weight: 500;
-        width: 100%;
-
-        .content {
-            display: flex;
-            align-items: center;
+            padding: 0px;
             justify-content: space-between;
             width: 100%;
-            background-color: red;
+            align-items: center;
+            justify-content: space-between;
+
             .name {
                 font-weight: 600;
+                padding-left: 10px;
+            }
+
+            .options{
+                height: 90%;
+                display: flex;
             }
         }
     }
-    .options {
-        display: flex;
-        align-items: center;
-    } */
+
 </style>

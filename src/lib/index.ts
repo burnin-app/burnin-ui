@@ -9,3 +9,5 @@ export { List } from "./ui/list";
 export { App } from "./layout";
 
 export { SvgIcon } from "./icons";
+export {Dialog} from "./ui/dialog";
+export { Panel } from "./ui/panel";

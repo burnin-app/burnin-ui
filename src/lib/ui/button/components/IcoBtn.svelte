@@ -7,7 +7,7 @@
 
     interface IcoBtnProps extends HTMLButtonAttributes {
         icon: string;
-        onclick?: () => void;
+        onclick?: (() => void) | undefined;
         size?: number;
         padding?: number;
         fill?: boolean;

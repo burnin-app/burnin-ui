@@ -6,11 +6,12 @@
     interface ItemProps {
         children: Snippet;
         id: string;
+        classes?: string;
         classStyle?: string;
         onclick?: () => void;
     }
 
-    let { children, id , classStyle = "", onclick}: ItemProps = $props();
+    let { children,  id , classStyle = "", classes, onclick}: ItemProps = $props();
 
     let context: ListContextProps = getListContext();
 
@@ -21,7 +22,7 @@
 </script>
 
 <button
-    class="item-wrapper"
+    class="item-wrapper {classes}"
     style={classStyle}
     class:selected={context.selected_id === id}
     onclick={handleItemClick}

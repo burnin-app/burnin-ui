@@ -14,17 +14,16 @@
 
 <style lang="scss">
     .window-wrapper {
+        background: var(--bg-color);
+        box-sizing: border-box;
+
+        flex: 1;
+        position: relative;
         min-height: 0;
         min-width: 0;
-        box-sizing: border-box;
-        position: fixed;
-        inset: 0;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        background: var(--bg-color);
 
     }
 </style>

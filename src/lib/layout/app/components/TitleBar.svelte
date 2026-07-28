@@ -20,7 +20,7 @@
 
 <div
     class="titlebar-wrapper"
-    style={`height: ${height}px`}
+    style={`height:${height}px; flex:0 0 ${height}px;`}
     data-tauri-drag-region
 >
     {#if os === "mac"}
@@ -64,12 +64,15 @@
 
 <style lang="scss">
     .titlebar-wrapper {
-        flex: 0 0 36px; /* or whatever height */
+        flex: 0 0 30px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 0 10px;
         border-bottom: 1px solid var(--border-color);
+        user-select: none;
+        box-sizing: border-box;
+        z-index: 100;
 
         .title {
             font-size: 14px;

@@ -8,6 +8,8 @@
         selected_id?: string | null;
     }
 
+    let wrapper: HTMLDivElement;
+
     let { children, selected_id = $bindable(null) }: ListRootProps = $props();
 
     let context = $state<ListContextProps>({
@@ -16,12 +18,32 @@
         search_key: "name",
         search_value: "",
         filter: false,
+        scrollHTMLContainer: null
     });
 
     setListContext(context);
+
+
+    $effect(() => {
+      if (!selected_id || !context.scrollHTMLContainer) return;
+        context.selected_id = selected_id;
+        queueMicrotask(() => {
+            const el = context.scrollHTMLContainer.querySelector(
+                `[data-item-id="${CSS.escape(selected_id)}"]`
+            ) as HTMLElement | null;
+
+            console.log(el);
+
+            el?.scrollIntoView({
+                behavior: "auto",
+                block: "nearest",
+                inline: "nearest",
+            });
+        });
+    })
 </script>
 
-<div class="list-wrapper">
+<div class="list-wrapper" bind:this={wrapper}>
     {@render children()}
 </div>
 

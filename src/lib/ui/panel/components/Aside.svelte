@@ -3,12 +3,15 @@
 
     interface PanelProps {
         children: Snippet;
+        width?: string;
+        border? : boolean;
+        style?: string;
     }
 
-    let { children }: PanelProps = $props();
+    let { children , width = "200", border = true, style}: PanelProps = $props();
 </script>
 
-<div class="aside-wrapper">
+<div class="aside-wrapper" style={`flex: 0 0 ${width}px; ${style}`}>
     {@render children()}
 </div>
 

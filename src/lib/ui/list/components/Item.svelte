@@ -26,6 +26,7 @@
     style={classStyle}
     class:selected={context.selected_id === id}
     onclick={handleItemClick}
+    data-item-id={id}
 >
     {@render children()}
 </button>

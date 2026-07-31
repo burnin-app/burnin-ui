@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { Snippet } from "svelte";
+    import { onMount, onDestroy } from "svelte";
     import { getMenuContext } from "../../../context";
 
     export interface MenuItemProps {
@@ -25,6 +26,45 @@
             context.close?.();
         }
     }
+
+    function normalizeShortcut(shortcut: string) {
+         return shortcut
+             .toLowerCase()
+             .split("-")
+             .map(s => s.trim())
+             .sort()
+             .join("+");
+     }
+
+     function normalizeEvent(event: KeyboardEvent) {
+         const parts: string[] = [];
+
+         if (event.ctrlKey) parts.push("ctrl");
+         if (event.metaKey) parts.push("meta");
+         if (event.altKey) parts.push("alt");
+         if (event.shiftKey) parts.push("shift");
+
+         parts.push(event.key.toLowerCase());
+
+         return parts.sort().join("+");
+     }
+
+     function handleKeyDown(event: KeyboardEvent) {
+         if (!shortcut) return;
+
+         if (normalizeEvent(event) === normalizeShortcut(shortcut)) {
+             event.preventDefault();
+             onClick();
+         }
+     }
+
+     onMount(() => {
+         document.addEventListener("keydown", handleKeyDown);
+     });
+
+     onDestroy(() => {
+         document.removeEventListener("keydown", handleKeyDown);
+     });
 </script>
 
 <div class="menu-item-wrapper">
@@ -33,7 +73,7 @@
             {@render children()}
         </div>
         {#if shortcut}
-            <div class="menu-item-ctn">
+            <div class="menu-item-ctn shortcut">
                 {shortcut}
             </div>
         {/if}
@@ -59,5 +99,10 @@
         &:hover {
             background-color: var(--tab-hover-bg);
         }
+    }
+
+    .shortcut{
+        color:#777;
+        font-size: 12px;
     }
 </style>

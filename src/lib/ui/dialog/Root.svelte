@@ -1,6 +1,6 @@
 <script lang="ts">
     import { type Snippet } from "svelte";
-    import { onMount, onDestroy, setContext } from "svelte";
+    import { onMount, onDestroy } from "svelte";
     import IcoBtn from "../button/components/IcoBtn.svelte";
 
     interface DialogProps {
@@ -14,12 +14,12 @@
         onClose?: () => void;
         visible?: boolean;
         footer?: Snippet;
+        centered?: boolean;
     }
 
 
-    let { header, headerIcon, children, onClose, visible = $bindable(false), footer, form = false, onOpen, width = "500px", height = "max-content" }: DialogProps = $props();
+    let { header, headerIcon, children, onClose, visible = $bindable(false), footer, form = false,  centered = false, onOpen, width = "500px", height = "max-content" }: DialogProps = $props();
 
-    setContext("dialog-size", [width, height]);
 
     function handleClose(){
       console.log("clicked");
@@ -51,7 +51,7 @@
 </script>
 
 {#if visible}
-<div class="dialog-wrapper" role="grid" tabindex="0">
+<div class="dialog-wrapper" role="grid" tabindex="0" class:centered={centered}>
     <div class="dialog-content" style={`width: ${width}; height: ${height};`}>
         <div class="dialog-header">
             <div class='title'>
@@ -82,15 +82,17 @@
     .dialog-wrapper {
         position: absolute;
         inset: 0;
-
         display: flex;
         justify-content: center;
-        align-items: center;
-
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 1000;
         align-items: flex-start;
         padding-top: 22vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    .dialog-wrapper.centered {
+        align-items: center;
+        padding-top: 0;
     }
 
     .dialog-content {
@@ -151,6 +153,7 @@
         overflow-x: hidden;
 
         box-sizing: border-box;
+        background-color: var(--bg-color);
     }
 
     /* ---------- Footer ---------- */

@@ -11,3 +11,4 @@ export { App } from "./layout";
 export { SvgIcon } from "./icons";
 export {Dialog} from "./ui/dialog";
 export { Panel } from "./ui/panel";
+export { ContextMenu } from "./ui/contextmenu";

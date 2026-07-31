@@ -16,4 +16,5 @@ export interface ListContextProps {
   search_key: string;
   search_value: string;
   filter: boolean;
+  scrollHTMLContainer: HTMLDivElement | null;
 }

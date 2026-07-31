@@ -6,15 +6,20 @@
         children?: Snippet;
         height?: number;
         title: string;
+        icon?: string;
         os: string;
         iconsize?: number
         onClose?: () => void;
     }
 
-    let { children, os, onClose, title, height = 30 , iconsize = 30}: TitlebarProps = $props();
+    let { children, os, icon, onClose, title, height = 30 , iconsize = 30}: TitlebarProps = $props();
 
     function test() {
         console.log("test");
+    }
+
+    function handleClose(){
+      onClose?.();
     }
 </script>
 
@@ -27,6 +32,11 @@
         {@render titleBarButtons(os)}
     {/if}
     <div class="content">
+        {#if icon}
+            <div class="title-icon" data-tauri-drag-region>
+                <img src={icon} alt="app-icon" data-tauri-drag-region/>
+            </div>
+        {/if}
         <div class="title" data-tauri-drag-region>
             {title}
         </div>
@@ -53,7 +63,7 @@
         <IcoBtn
             icon="Close"
             size={iconsize}
-            onclick={() => onClose?.()}
+            onclick={handleClose}
             backgroundColor="transparent"
             hoveredBgColor="#e81120"
             border={false}
@@ -74,8 +84,22 @@
         box-sizing: border-box;
         z-index: 100;
 
+        .title-icon{
+            // height: 30px;
+            height: 100%;
+            padding: 5px 0px;
+            // position: relative;
+
+            img{
+                width: 100%;
+                height: 100%;
+            }
+
+        }
+
         .title {
             font-size: 14px;
+            font-weight: 600;
         }
     }
 

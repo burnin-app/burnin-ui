@@ -1,12 +1,12 @@
 [data-theme="dark"] {
     --bg-color: #0a0a0a;
-    --bg-color: #000000;
     --surface-color: #0a0a0a;
     --text-color: #cdcdcd;
     --text-color-dim: #7d7d7d;
     --light-border-color: #3b3b3b;
     --bright-border-color: #5a5a5a;
     --accent-color: #5e9eff;
+    --accent-color2: #DA4167;
 
     /* splitter */
     --pane-handle: var(--bg-color);
@@ -42,6 +42,11 @@
     --list-nth-bg-color: #101010;
     --list-nth-bg-hover:var(--list-bg-hover);
     --list-border-color: var(--list-nth-bg-color);
+
+    // screenplay editor
+    --editor-bg: #1e1e1e;
+    --editor-color: #cdcdcd;
+
 
     body {
         color: var(--text-color);

@@ -143,6 +143,7 @@
             padding: 0px;
             justify-content: space-between;
             width: 100%;
+            height: 100%;
             align-items: center;
             justify-content: space-between;
 
@@ -152,8 +153,11 @@
             }
 
             .options{
-                height: 90%;
+                height: 100%;
                 display: flex;
+                align-items: center;
+
+
             }
         }
     }

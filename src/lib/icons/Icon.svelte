@@ -21,7 +21,12 @@
         Box: Icons.Box,
         Bin: Icons.Bin,
         Notes: Icons.Notes,
-        Files: Icons.Files
+        Files: Icons.Files,
+        InsertSlide: Icons.InsertSlide,
+        Dev: Icons.Dev,
+        DarkMode: Icons.DarkMode,
+        MenuMoreVertical: Icons.MenuMoreVertical,
+        StickyNote: Icons.StickyNote
     };
 
     interface IconProps extends SvgIconProp {

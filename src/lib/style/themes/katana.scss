@@ -1,11 +1,12 @@
 [data-theme="katana"] {
     --bg-color: #262626;
-    --surface-color: #242424;
+    --surface-color: #101010;
     --text-color: #cdcdcd;
     --text-color-dim: #7d7d7d;
     --light-border-color: #3b3b3b;
     --bright-border-color: #5a5a5a;
     --accent-color: #5e9eff;
+    --accent-color2: #DA4167;
 
     /* splitter */
     --pane-handle: var(--bg-color);
@@ -33,10 +34,15 @@
     // LIST ITEM
     --list-bg-color: #333333;
     --list-bg-hover: #555;
-    --list-bg-selected: #4d4d4d;
+    --list-bg-selected: #6f6f6f;
+    // --list-bg-selected: #4d4d4d;
     --list-nth-bg-color: #383838;
     --list-nth-bg-hover:#555;
     --list-border-color: var(--border-color);
+
+    // screenplay editor
+    --editor-color: #1e1e1e;
+    --editor-bg: #cdcdcd;
 
     body {
         color: var(--text-color);
@@ -53,4 +59,5 @@
             background-color: #202020;
         }
     }
+
 }

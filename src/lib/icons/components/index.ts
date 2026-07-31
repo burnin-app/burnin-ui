@@ -15,6 +15,11 @@ import Box from "./Box.svelte";
 import Bin from "./Bin.svelte";
 import Notes from "./Notes.svelte";
 import Files from "./Files.svelte";
+import InsertSlide from "./InsertSlide.svelte";
+import Dev from "./Dev.svelte";
+import DarkMode from "./DarkMode.svelte";
+import MenuMoreVertical from "./MenuMoreVertical.svelte";
+import StickyNote from "./StickyNote.svelte";
 
 export const Icons = {
   ArrowUp,
@@ -33,7 +38,12 @@ export const Icons = {
   Box,
   Bin,
   Notes,
-  Files
+  Files,
+  InsertSlide,
+  Dev,
+  DarkMode,
+  MenuMoreVertical,
+  StickyNote
 };
 
 export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing" | "Home" | "LayoutSideBarRight" |
@@ -47,4 +57,9 @@ export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing
   | "Box"
   | "Notes"
   | "Files"
+  | "InsertSlide"
+  | "Dev"
+  | "DarkMode"
+  | "MenuMoreVertical"
+  | "StickyNote"
   ;

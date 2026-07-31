@@ -1,14 +1,23 @@
 <script lang="ts">
-    import type { Snippet } from "svelte";
+    import { onMount, type Snippet } from "svelte";
+    import { setListContext, getListContext } from "../../../context";
 
     interface ContentProps {
         children: Snippet;
     }
 
+    let scroll_container: HTMLDivElement;
+
     let { children }: ContentProps = $props();
+    let context = getListContext();
+    onMount(() => {
+      console.log("mounted, eleemetn");
+      context.scrollHTMLContainer = scroll_container;
+      console.log(scroll_container);
+    })
 </script>
 
-<div class="content-wrapper">
+<div class="content-wrapper" bind:this={scroll_container}>
     {@render children()}
 </div>
 

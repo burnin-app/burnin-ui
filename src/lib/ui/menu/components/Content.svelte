@@ -7,15 +7,16 @@
     interface ContentProps {
         children: Snippet;
         matchTriggerWidth?:boolean;
+        style?: string;
     }
-    let { children, matchTriggerWidth = false}: ContentProps = $props();
+    let { children, style, matchTriggerWidth = false}: ContentProps = $props();
 
     let context = getMenuContext();
 </script>
 
 {#if globalUIState.activeMenuId === context.id}
     <div class="portal">
-        <Menu.Root matchTriggerWidth>
+        <Menu.Root matchTriggerWidth style={style}>
             {@render children()}
         </Menu.Root>
     </div>

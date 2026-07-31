@@ -8,9 +8,10 @@
     interface MenuProps {
         children: Snippet;
         matchTriggerWidth?: boolean;
+        style?: string;
     }
 
-    let { children, matchTriggerWidth = false }: MenuProps = $props();
+    let { children, style, matchTriggerWidth = false }: MenuProps = $props();
     let context = getMenuContext();
     let contentElement = $state<HTMLDivElement | null>(null);
 
@@ -66,7 +67,7 @@
     });
 </script>
 
-<div class="menu-root" bind:this={contentElement}>
+<div class="menu-root" style={style} bind:this={contentElement}>
     {@render children()}
 </div>
 
@@ -81,7 +82,7 @@
         top: 0;
         left: 0;
         width: var(--menu-min-width);
-        background: var(--bg-color);
+        background: var(--surface-color);
         border: 1px solid var(--border-color);
         border-radius: var(--border-radius);
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);

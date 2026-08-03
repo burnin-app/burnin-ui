@@ -6,11 +6,12 @@
     interface ListRootProps {
         children: Snippet;
         selected_id?: string | null;
+        autoscroll?: boolean;
     }
 
     let wrapper: HTMLDivElement;
 
-    let { children, selected_id = $bindable(null) }: ListRootProps = $props();
+    let { children, selected_id = $bindable(null) , autoscroll = false}: ListRootProps = $props();
 
     let context = $state<ListContextProps>({
         selected_id: selected_id,
@@ -25,21 +26,21 @@
 
 
     $effect(() => {
-      if (!selected_id || !context.scrollHTMLContainer) return;
-        context.selected_id = selected_id;
-        queueMicrotask(() => {
-            const el = context.scrollHTMLContainer.querySelector(
-                `[data-item-id="${CSS.escape(selected_id)}"]`
-            ) as HTMLElement | null;
+      if(autoscroll){
+        if (!selected_id || !context.scrollHTMLContainer) return;
+          context.selected_id = selected_id;
+          queueMicrotask(() => {
+              const el = context.scrollHTMLContainer.querySelector(
+                  `[data-item-id="${CSS.escape(selected_id)}"]`
+              ) as HTMLElement | null;
 
-            console.log(el);
-
-            el?.scrollIntoView({
-                behavior: "auto",
-                block: "nearest",
-                inline: "nearest",
-            });
-        });
+              el?.scrollIntoView({
+                  behavior: "auto",
+                  block: "nearest",
+                  inline: "nearest",
+              });
+          });
+      }
     })
 </script>
 

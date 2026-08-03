@@ -26,7 +26,14 @@
         Dev: Icons.Dev,
         DarkMode: Icons.DarkMode,
         MenuMoreVertical: Icons.MenuMoreVertical,
-        StickyNote: Icons.StickyNote
+        StickyNote: Icons.StickyNote,
+        Tick: Icons.Tick,
+        Pen: Icons.Pen,
+        Marker: Icons.Marker,
+        Eraser: Icons.Eraser,
+        UndoRight: Icons.UndoRight,
+        UndoLeft: Icons.UndoLeft,
+        Clear: Icons.Clear
     };
 
     interface IconProps extends SvgIconProp {

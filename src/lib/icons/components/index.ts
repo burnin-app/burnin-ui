@@ -20,6 +20,13 @@ import Dev from "./Dev.svelte";
 import DarkMode from "./DarkMode.svelte";
 import MenuMoreVertical from "./MenuMoreVertical.svelte";
 import StickyNote from "./StickyNote.svelte";
+import Tick from "./Tick.svelte";
+import Pen from "./Pen.svelte";
+import Marker from "./Marker.svelte";
+import Eraser from "./Eraser.svelte";
+import UndoLeft from "./UndoLeft.svelte";
+import UndoRight from "./UndoRight.svelte";
+import Clear from "./Clear.svelte";
 
 export const Icons = {
   ArrowUp,
@@ -43,7 +50,14 @@ export const Icons = {
   Dev,
   DarkMode,
   MenuMoreVertical,
-  StickyNote
+  StickyNote,
+  Tick,
+  Pen,
+  Marker,
+  Eraser,
+  UndoLeft,
+  UndoRight,
+  Clear
 };
 
 export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing" | "Home" | "LayoutSideBarRight" |
@@ -62,4 +76,11 @@ export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing
   | "DarkMode"
   | "MenuMoreVertical"
   | "StickyNote"
+  | "Tick"
+  | "Pen"
+  | "Marker"
+  | "Eraser"
+  | "UndoRight"
+  | "UndoLeft"
+  | "Clear"
   ;

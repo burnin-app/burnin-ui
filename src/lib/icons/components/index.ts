@@ -27,6 +27,13 @@ import Eraser from "./Eraser.svelte";
 import UndoLeft from "./UndoLeft.svelte";
 import UndoRight from "./UndoRight.svelte";
 import Clear from "./Clear.svelte";
+import Play from "./Play.svelte";
+import PlayNext from "./PlayNext.svelte";
+import PlayPrevious from "./PlayPrevious.svelte";
+import PlayStop from "./PlayStop.svelte";
+import PlayGoToEnd from "./PlayGoToEnd.svelte";
+import PlayGoToStart from "./PlayGoToStart.svelte";
+import Screenplay from "./Screenplay.svelte";
 
 export const Icons = {
   ArrowUp,
@@ -57,7 +64,14 @@ export const Icons = {
   Eraser,
   UndoLeft,
   UndoRight,
-  Clear
+  Clear,
+  Play,
+  PlayNext,
+  PlayPrevious,
+  PlayStop,
+  PlayGoToEnd,
+  PlayGoToStart,
+  Screenplay
 };
 
 export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing" | "Home" | "LayoutSideBarRight" |
@@ -83,4 +97,11 @@ export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing
   | "UndoRight"
   | "UndoLeft"
   | "Clear"
+  | "Play"
+  | "PlayPervious"
+  | "PlayNext"
+  | "PlayStop"
+  | "PlayGoToEnd"
+  | "PlayGoToStart"
+  | "Screenplay"
   ;

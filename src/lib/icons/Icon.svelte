@@ -33,7 +33,14 @@
         Eraser: Icons.Eraser,
         UndoRight: Icons.UndoRight,
         UndoLeft: Icons.UndoLeft,
-        Clear: Icons.Clear
+        Clear: Icons.Clear,
+        Play: Icons.Play,
+        PlayNext: Icons.PlayNext,
+        PlayPrevious: Icons.PlayPrevious,
+        PlayStop: Icons.PlayStop,
+        PlayGoToEnd: Icons.PlayGoToEnd,
+        PlayGoToStart: Icons.PlayGoToStart,
+        Screenplay: Icons.Screenplay
     };
 
     interface IconProps extends SvgIconProp {

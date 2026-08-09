@@ -9,15 +9,21 @@
         classes?: string;
         classStyle?: string;
         onclick?: () => void;
+        ondblclick?: () => void;
     }
 
-    let { children,  id , classStyle = "", classes, onclick}: ItemProps = $props();
+    let { children,  id , classStyle = "", classes, onclick, ondblclick}: ItemProps = $props();
 
     let context: ListContextProps = getListContext();
 
     function handleItemClick() {
         context.selected_id = id;
         onclick?.();
+    }
+
+    function handleItemDblClick() {
+      context.selected_id = id;
+      ondblclick?.();
     }
 </script>
 
@@ -26,6 +32,7 @@
     style={classStyle}
     class:selected={context.selected_id === id}
     onclick={handleItemClick}
+    ondblclick={handleItemDblClick}
     data-item-id={id}
 >
     {@render children()}

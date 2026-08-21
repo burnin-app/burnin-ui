@@ -9,14 +9,14 @@
         matchTriggerWidth?:boolean;
         style?: string;
     }
-    let { children, style, matchTriggerWidth = false}: ContentProps = $props();
+    let { children, style, matchTriggerWidth = false }: ContentProps = $props();
 
     let context = getMenuContext();
 </script>
 
 {#if globalUIState.activeMenuId === context.id}
     <div class="portal">
-        <Menu.Root matchTriggerWidth style={style}>
+        <Menu.Root matchTriggerWidth={matchTriggerWidth} style={style}>
             {@render children()}
         </Menu.Root>
     </div>

@@ -1,7 +1,8 @@
 <script lang="ts">
-    import type { Snippet } from "svelte";
+    import  {type Snippet, getContext } from "svelte";
     import { getListContext } from "../../../context";
     import type { ListContextProps } from "../../../types";
+	import { globalUIState } from "../../../globalState.svelte";
 
     interface ItemProps {
         children: Snippet;
@@ -10,9 +11,10 @@
         classStyle?: string;
         onclick?: () => void;
         ondblclick?: () => void;
+        oncontextmenu?:() => void;
     }
 
-    let { children,  id , classStyle = "", classes, onclick, ondblclick}: ItemProps = $props();
+    let { children,  id , classStyle = "", classes, onclick, ondblclick, oncontextmenu}: ItemProps = $props();
 
     let context: ListContextProps = getListContext();
 
@@ -25,6 +27,18 @@
       context.selected_id = id;
       ondblclick?.();
     }
+
+    let componentId = getContext<string>("componentId");
+    function handleContextMenu(e: MouseEvent){
+      e.stopPropagation();
+      e.preventDefault();
+      oncontextmenu?.();
+      globalUIState.menuPosition.x =  e.clientX;
+      globalUIState.menuPosition.y =  e.clientY;
+      globalUIState.activeMenuId = componentId;
+      console.log(componentId);
+      context.selected_id = id;
+    }
 </script>
 
 <button
@@ -33,6 +47,7 @@
     class:selected={context.selected_id === id}
     onclick={handleItemClick}
     ondblclick={handleItemDblClick}
+    oncontextmenu={handleContextMenu}
     data-item-id={id}
 >
     {@render children()}

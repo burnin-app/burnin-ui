@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { type Snippet, onMount } from "svelte";
+    import { type Snippet, onMount, getContext } from "svelte";
     import { getMenuContext } from "../../../context";
     import { globalUIState } from "../../../globalState.svelte";
 
@@ -8,14 +8,26 @@
     }
 
     let contentElement = $state<HTMLDivElement | null>(null);
+    let componentId = getContext<string>("componentId");
 
     let { children }: TriggerProps = $props();
     let context = getMenuContext();
 
     function handleClick(e: MouseEvent) {
         e.stopPropagation(); // Prevent bubbling to document
-        globalUIState.activeMenuId = context.id;
-        context.isOpen = true;
+        openMenu();
+    }
+
+    function openMenu() {
+        globalUIState.activeMenuId = componentId;
+        globalUIState.isOpen = true;
+    }
+
+    function handleContextMenu(e: MouseEvent) {
+        e.preventDefault();
+        globalUIState.menuPosition.x = e.clientX;
+        globalUIState.menuPosition.y = e.clientY;
+        openMenu();
     }
 
     onMount(() => {
@@ -24,7 +36,7 @@
 </script>
 
 <div class="trigger-wrapper" bind:this={contentElement}>
-    <button class="trigger" onclick={handleClick}>
+    <button class="trigger" onclick={handleClick} oncontextmenu={handleContextMenu}>
         {@render children()}
     </button>
 </div>

@@ -56,11 +56,12 @@ export function setContentType(root: FourPaneNode, targetId: string, contentType
     if (pane.contentType === contentType) return true;
 
     const existing = contentType ? findLeafByContentType(root, contentType) : null;
-    if (existing && existing.id !== pane.id) {
-        const temp = pane.contentType;
-        pane.contentType = existing.contentType;
-        existing.contentType = temp;
-    } else {
+      if (existing && existing.id !== pane.id) {
+          const temp = pane.contentType;
+          pane.contentType = existing.contentType;
+          existing.contentType = temp;
+      }
+    else {
         pane.contentType = contentType;
     }
     return true;

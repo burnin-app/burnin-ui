@@ -1,11 +1,12 @@
 <script lang="ts">
     import type { Snippet } from "svelte";
     import { onMount, onDestroy } from "svelte";
-    import { getMenuContext } from "../../../context";
+    import { globalUIState } from "../../../globalState.svelte";
 
     export interface MenuItemProps {
         children: Snippet;
         onclick?: () => void;
+        oncontextmenu?: () => void;
         closeOnClick?: boolean;
         shortcut?: string;
     }
@@ -14,16 +15,15 @@
         children,
         onclick,
         shortcut,
+        oncontextmenu,
         closeOnClick = true,
     }: MenuItemProps = $props();
 
-    let context = getMenuContext();
 
     function onClick() {
         onclick?.();
-        // close menu
         if (closeOnClick) {
-            context.close?.();
+            globalUIState.close?.();
         }
     }
 
@@ -58,6 +58,10 @@
          }
      }
 
+     function handleContextMenu(){
+       oncontextmenu?.();
+     }
+
      onMount(() => {
          document.addEventListener("keydown", handleKeyDown);
      });
@@ -68,7 +72,7 @@
 </script>
 
 <div class="menu-item-wrapper">
-    <button class="menu-item-btn" onclick={onClick}>
+    <button class="menu-item-btn" onclick={onClick} oncontextmenu={handleContextMenu}>
         <div class="menu-item-ctn">
             {@render children()}
         </div>

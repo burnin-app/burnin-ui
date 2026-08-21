@@ -1,4 +1,4 @@
-import type { MenuContextProps, ListContextProps } from "./types";
+import type { MenuContextProps, ListContextProps, ContextMenuContextProps } from "./types";
 import { createContext } from "svelte";
 
 export const [getMenuContext, setMenuContext] =
@@ -6,3 +6,7 @@ export const [getMenuContext, setMenuContext] =
 
 export const [getListContext, setListContext] =
   createContext<ListContextProps>();
+
+
+export const [getContextMenuContext, setContextMenuContext] =
+  createContext<ContextMenuContextProps>();

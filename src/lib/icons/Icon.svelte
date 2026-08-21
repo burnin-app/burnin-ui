@@ -16,6 +16,7 @@
         PhotoLib: Icons.PhotoLib,
         PlusNew: Icons.PlusNew,
         FolderOpen: Icons.FolderOpen,
+        FolderClose: Icons.FolderClose,
         ArrowDownCircle: Icons.ArrowDownCircle,
         ArrowLeft: Icons.ArrowLeft,
         Box: Icons.Box,
@@ -40,7 +41,9 @@
         PlayStop: Icons.PlayStop,
         PlayGoToEnd: Icons.PlayGoToEnd,
         PlayGoToStart: Icons.PlayGoToStart,
-        Screenplay: Icons.Screenplay
+        Screenplay: Icons.Screenplay,
+        Images: Icons.Images,
+        Save: Icons.Save
     };
 
     interface IconProps extends SvgIconProp {

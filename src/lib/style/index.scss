@@ -5,7 +5,6 @@
 :root {
     --menu-z-index: 9999;
     --tab-height: 28px;
-
 }
 
 [data-theme="katana"]{
@@ -94,6 +93,13 @@ html {
         width: 2px;
     }
 }
+
+*:focus,
+*:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 
 html,
 body,

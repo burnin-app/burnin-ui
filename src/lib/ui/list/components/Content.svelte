@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount, type Snippet } from "svelte";
-    import { setListContext, getListContext } from "../../../context";
+    import { getListContext } from "../../../context";
 
     interface ContentProps {
         children: Snippet;
@@ -11,9 +11,7 @@
     let { children }: ContentProps = $props();
     let context = getListContext();
     onMount(() => {
-      console.log("mounted, eleemetn");
       context.scrollHTMLContainer = scroll_container;
-      console.log(scroll_container);
     })
 </script>
 

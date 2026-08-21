@@ -1,26 +1,20 @@
 <script lang="ts">
-    import { type Snippet} from "svelte";
+    import { type Snippet, setContext} from "svelte";
     import { setMenuContext } from "../../../context";
     import type { MenuContextProps } from "../../../types";
-    import { globalUIState } from "../../../globalState.svelte";
 
     interface RootProps {
         children: Snippet;
     }
-    const uid: string = $props.id();
+    const componentId = crypto.randomUUID();
+    setContext("componentId", componentId);
 
     let { children }: RootProps = $props();
 
     let context = $state<MenuContextProps>({
-        id: uid,
-        isOpen: false,
-        close: onclose,
+        id: componentId,
     });
 
-    function onclose() {
-        globalUIState.activeMenuId = null;
-        context.isOpen = false;
-    }
     setMenuContext(context);
 </script>
 

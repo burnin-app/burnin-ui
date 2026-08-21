@@ -1,7 +1,10 @@
 <script lang="ts">
-    import type { Snippet } from "svelte";
+    import { type Snippet, setContext } from "svelte";
     import { setListContext } from "../../../context";
     import type { ListContextProps } from "../../../types";
+
+    const componentId = crypto.randomUUID();
+    setContext("componentId", componentId);
 
     interface ListRootProps {
         children: Snippet;

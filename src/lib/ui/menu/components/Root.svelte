@@ -11,14 +11,13 @@
         style?: string;
     }
 
-    let { children, style, matchTriggerWidth = false }: MenuProps = $props();
+    let { children, style, matchTriggerWidth = false}: MenuProps = $props();
     let context = getMenuContext();
     let contentElement = $state<HTMLDivElement | null>(null);
 
     function closeMenu() {
         if (context.id === globalUIState.activeMenuId) {
-            globalUIState.activeMenuId = null;
-            context.isOpen = false;
+            globalUIState.close();
         }
     }
 
@@ -36,15 +35,17 @@
 
 
     function updatePosition(): (() => void) | undefined {
-        if (context.triggerElement && contentElement) {
-            return updateMenuPosition(context.triggerElement, contentElement, {matchTriggerWidth});
+        if (!contentElement) return;
+
+        if (context.triggerElement) {
+            return updateMenuPosition(context.triggerElement, contentElement, { matchTriggerWidth });
         }
     }
 
     let updatePositionFn = $state<(() => void) | undefined>(undefined);
 
     onMount(() => {
-        if (context.isOpen && contentElement) {
+        if (globalUIState.isOpen && contentElement) {
             tick().then(() => {
                 updatePositionFn = updatePosition();
             });

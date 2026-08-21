@@ -34,6 +34,9 @@ import PlayStop from "./PlayStop.svelte";
 import PlayGoToEnd from "./PlayGoToEnd.svelte";
 import PlayGoToStart from "./PlayGoToStart.svelte";
 import Screenplay from "./Screenplay.svelte";
+import Images from "./Images.svelte";
+import FolderClose from "./FolderClose.svelte";
+import Save from "./Save.svelte";
 
 export const Icons = {
   ArrowUp,
@@ -47,6 +50,7 @@ export const Icons = {
   PhotoLib,
   PlusNew,
   FolderOpen,
+  FolderClose,
   ArrowDownCircle,
   ArrowLeft,
   Box,
@@ -71,7 +75,9 @@ export const Icons = {
   PlayStop,
   PlayGoToEnd,
   PlayGoToStart,
-  Screenplay
+  Screenplay,
+  Images,
+  Save
 };
 
 export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing" | "Home" | "LayoutSideBarRight" |
@@ -79,6 +85,7 @@ export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing
   | "PhotoLib"
   | "PlusNew"
   | "FolderOpen"
+  | "FolderClose"
   | "ArrowDownCircle"
   | "ArrowLeft"
   | "Bin"
@@ -104,4 +111,6 @@ export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing
   | "PlayGoToEnd"
   | "PlayGoToStart"
   | "Screenplay"
+  | "Images"
+  | "Save"
   ;

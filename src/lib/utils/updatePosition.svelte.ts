@@ -5,7 +5,8 @@ import {
     size,
     offset,
     autoUpdate,
-    type Placement
+    type Placement,
+    type VirtualElement
 } from "@floating-ui/dom";
 
 
@@ -50,6 +51,49 @@ export function updateMenuPosition(
                 left: `${x}px`,
                 top: `${y}px`
             });
+        });
+    });
+}
+
+
+interface ContextMenuPositionOptions {
+    padding?: number;
+}
+
+export function updateContextMenuPosition(
+    x: number,
+    y: number,
+    content: HTMLElement,
+    { padding: paddingValue = 4 }: ContextMenuPositionOptions = {}
+) {
+    const virtualEl: VirtualElement = {
+        getBoundingClientRect() {
+            return {
+                width: 0,
+                height: 0,
+                x,
+                y,
+                top: y,
+                left: x,
+                right: x,
+                bottom: y
+            };
+        }
+    };
+
+    return autoUpdate(document.body, content, async () => {
+        const { x: menuX, y: menuY } = await computePosition(virtualEl, content, {
+            placement: "bottom-start",
+            middleware: [
+                offset(2),
+                flip(),
+                shift({ padding: paddingValue })
+            ]
+        });
+
+        Object.assign(content.style, {
+            left: `${menuX}px`,
+            top: `${menuY}px`
         });
     });
 }

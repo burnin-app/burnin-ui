@@ -2,10 +2,9 @@ import type { Component } from "svelte";
 
 export interface MenuContextProps {
   id: string;
-  isOpen: boolean;
-  close?: () => void;
   triggerElement?: HTMLDivElement | null;
   contentElement?: HTMLDivElement | null;
+  point?: { x: number; y: number } | null;
 }
 
 export type CompRegistry = Record<string, Component<any>>;
@@ -17,4 +16,13 @@ export interface ListContextProps {
   search_value: string;
   filter: boolean;
   scrollHTMLContainer: HTMLDivElement | null;
+}
+
+
+export interface ContextMenuContextProps{
+  id: string;
+  isOpen: boolean;
+  close ?: () => void;
+  triggerElement?: HTMLDivElement | null;
+  contentElement?: HTMLDivElement | null;
 }

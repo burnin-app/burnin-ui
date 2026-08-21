@@ -1,65 +1,110 @@
 <script lang="ts">
-    import type { Snippet } from 'svelte';
-    import {
-      computePosition,
-      autoUpdate,
-      flip,
-      shift,
-      offset
-    } from "@floating-ui/dom";
-    import { onDestroy, tick } from "svelte";
+    import {type Snippet, getContext, onDestroy, onMount, tick} from "svelte";
+    import { globalUIState } from "../../../globalState.svelte";
+    import { updateContextMenuPosition } from "../../../utils";
 
-    interface ContentMenuProps {
-        trigger: boolean;
-        children: Snippet;
-        onOpen?: () => void;
-        onClose?: () => void;
+    interface RootProps{
+      children: Snippet;
+      style?: string;
+      ondestory?: () => void;
+      onupdate?: () => void;
     }
 
-    let menu: HTMLDivElement;
+    let componentId = getContext<string>("componentId");
 
-    let { children, trigger = $bindable(true), onOpen, onClose }: ContentMenuProps = $props();
+    let {children, style, ondestory, onupdate}: RootProps = $props();
 
-    async function updatePosition() {
-       if (!menu || !virtualEl) return;
+    let contentElement = $state<HTMLDivElement | null>(null);
 
-       const { x, y } = await computePosition(
-         virtualEl as any,
-         menu,
-         {
-           placement: "bottom-start",
-           middleware: [
-             offset(4),
-             flip(),
-             shift({ padding: 8 })
-           ]
-         }
-       );
+    function handleOutsideClick(e: MouseEvent) {
+        if (contentElement && !contentElement.contains(e.target as Node)) {
+            closeMenu();
+        }
+    }
 
-       Object.assign(menu.style, {
-         left: `${x}px`,
-         top: `${y}px`
-       });
-     }
+    function closeMenu() {
+        if (componentId === globalUIState.activeMenuId) {
+            globalUIState.activeMenuId = null;
+        }
+    }
 
+    function updatePosition(): (() => void) | undefined {
+        if (!contentElement) return;
+        return updateContextMenuPosition(globalUIState.menuPosition.x, globalUIState.menuPosition.y, contentElement);
 
-    // $effect(() => {
+    }
 
-    // })
+    let updatePositionFn = $state<(() => void) | undefined>(undefined);
+
+    onMount(() => {
+        if (globalUIState.activeMenuId === componentId && contentElement) {
+            tick().then(() => {
+                updatePositionFn = updatePosition();
+            });
+
+            document.addEventListener("click", handleOutsideClick);
+            // document.addEventListener("keydown", handleKeyDown);
+
+            return () => {
+                ondestory?.();
+                document.removeEventListener("click", handleOutsideClick);
+                // document.removeEventListener("keydown", handleKeyDown);
+            };
+        }
+    });
+
+    onDestroy(() => {
+        ondestory?.();
+        document.removeEventListener("click", handleOutsideClick);
+        // document.removeEventListener("keydown", handleKeyDown);
+        updatePositionFn?.();
+        updatePositionFn = undefined;
+    });
+
+    // Re-run whenever menu position changes
+    $effect(() => {
+        const activeMenuId = globalUIState.activeMenuId;
+        const x = globalUIState.menuPosition.x;
+        const y = globalUIState.menuPosition.y;
+
+        if (activeMenuId !== componentId || !contentElement) {
+            return;
+        }
+        onupdate?.();
+
+        tick().then(() => {
+            if (
+                globalUIState.activeMenuId === componentId &&
+                contentElement
+            ) {
+                updateContextMenuPosition(x, y, contentElement);
+            }
+        });
+    });
+
 </script>
-
-{#if trigger}
-    <div class="context-menu-wrapper" bind:this={menu}>
+<div class="menu-root" style={style} bind:this={contentElement}>
     {@render children()}
-    </div>
-{/if}
+</div>
+
 <style lang="scss">
-    .context-menu-wrapper{
+    .menu-root {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
         position: absolute;
-        border-radius: var(--button-border-radius);
-        background-color:red;
-        left: 300px;
-        top:400px;
+        width: max-content;
+        top: 0;
+        left: 0;
+        width: var(--menu-min-width);
+        background: var(--surface-color);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
         z-index: var(--menu-z-index);
+        min-width: var(--menu-min-width);
+        max-height: min(320px, calc(100vh - 16px));
+            overflow-y: auto;
     }
 </style>

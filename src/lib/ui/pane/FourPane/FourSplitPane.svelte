@@ -92,13 +92,15 @@
                             </Menu.Item>
                         {/if}
 
-                        {#if canSplit}
-                            <Menu.Item onclick={() => splitPane(effectiveRoot, root.id, "horizontal")}
-                                >Split Horizontal</Menu.Item
-                            >
-                            <Menu.Item onclick={() => splitPane(effectiveRoot, root.id, "vertical")}
-                                >Split Vertical</Menu.Item
-                            >
+                        {#if !isFullscreen}
+                            {#if canSplit}
+                                <Menu.Item onclick={() => splitPane(effectiveRoot, root.id, "horizontal")}
+                                    >Split Horizontal</Menu.Item
+                                >
+                                <Menu.Item onclick={() => splitPane(effectiveRoot, root.id, "vertical")}
+                                    >Split Vertical</Menu.Item
+                                >
+                            {/if}
                         {/if}
 
                         {#if totalLeaves > 1}

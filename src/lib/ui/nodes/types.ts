@@ -1,7 +1,7 @@
 export type Side = 'top' | 'right' | 'bottom' | 'left';
 export type ConnectionStyle = 'straight' | 'bezier' | 'nurbs';
 export type HandlePosition = 'top' | 'right' | 'bottom' | 'left';
-export type HandleSource = "source" | "target";
+export type HandleType = "source" | "target";
 
 export interface Node {
   id: string;
@@ -9,7 +9,8 @@ export interface Node {
   y: number;
   w: number;
   h: number;
-  text: string;
+  data: Record<string, unknown>;
+  type: string;
 }
 
 export interface Connection {

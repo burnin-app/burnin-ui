@@ -1,14 +1,42 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { ngState } from '../states/nodegraph.svelte';
-  import Node from "./Node.svelte";
-  import Connection from './Connection.svelte';
+  // import Node from "./Node.svelte";
+  import Edge from './Connection.svelte';
+  import type { Component } from "svelte";
+  import type{ Node, Connection} from "../types";
 
   let canvasEl: HTMLDivElement;
+  type NodeComponent = Component<{
+    node: Node;
+  }>;
+
+  interface NodeGraphProps{
+    nodeTypes: Record<string, NodeComponent>;
+    nodes: Node[];
+    edges: Connection[];
+  }
+
+  let {nodeTypes, nodes=$bindable([]), edges = $bindable([])}: NodeGraphProps = $props();
 
   onMount(() => {
     ngState.canvasEl = canvasEl;
+    ngState.nodes = nodes;
+    ngState.connections = edges;
+    console.log('NODES: ', $state.snapshot(ngState.nodes));
+    console.log(nodeTypes);
   });
+
+  // $effect(() => {
+  //    nodes = ngState.nodes;
+  //  });
+  //
+  // $effect(() => {
+  //   if(ngState.connections){
+  //     edges = ngState.connections;
+  //     console.log("updating eged");
+  //   }
+  // })
 </script>
 
 <svelte:window
@@ -35,9 +63,13 @@
       data-canvas-bg
       style="transform: translate({ngState.panX}px, {ngState.panY}px) scale({ngState.scale});"
     >
-        <Connection/>
+        <Edge/>
       {#each ngState.nodes as node (node.id)}
-          <Node node={node}/>
+          {@const NodeComponent = nodeTypes[node.type]}
+
+            {#if NodeComponent}
+              <NodeComponent node={node} />
+            {/if}
       {/each}
     </div>
   {/if}
@@ -48,61 +80,6 @@
     margin: 0;
     height: 100%;
     overflow: hidden;
-  }
-
-  .toolbar {
-    position: fixed;
-    top: 12px;
-    left: 12px;
-    z-index: 10;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    background: #fff;
-    padding: 8px 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
-    font-family: system-ui, sans-serif;
-    max-width: calc(100vw - 24px);
-  }
-
-  .toolbar button {
-    border: 1px solid #ddd;
-    background: #f8f8f8;
-    border-radius: 6px;
-    padding: 6px 10px;
-    cursor: pointer;
-    font-size: 13px;
-    flex-shrink: 0;
-  }
-
-  .toolbar button:hover {
-    background: #eee;
-  }
-
-  .zoom-label {
-    font-size: 12px;
-    color: #666;
-    min-width: 40px;
-    flex-shrink: 0;
-  }
-
-  .style-picker {
-    font-size: 12px;
-    color: #555;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-  }
-
-  .style-picker select {
-    font-size: 12px;
-    padding: 4px 6px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    background: #f8f8f8;
-    cursor: pointer;
   }
 
   .canvas {
@@ -128,37 +105,5 @@
     height: 1px;
     transform-origin: 0 0;
   }
-
-  .connections-layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: visible;
-    pointer-events: none;
-  }
-
-  .conn-line {
-    fill: none;
-    stroke: #94a3b8;
-    stroke-width: 2;
-    pointer-events: none;
-  }
-
-  .conn-hit {
-    fill: none;
-    stroke: transparent;
-    stroke-width: 14;
-    pointer-events: stroke;
-    cursor: pointer;
-  }
-
-  .conn-preview {
-    fill: none;
-    stroke: #6366f1;
-    stroke-width: 2;
-    stroke-dasharray: 5 5;
-    pointer-events: none;
-  }
-
 
 </style>

@@ -7,7 +7,7 @@
 	  node: Node
 	}
 
-     let {node = $bindable()}: NodeProps = $props();
+     let {node}: NodeProps = $props();
      let context = $state<NodeContextProps>({
        node: node
      })

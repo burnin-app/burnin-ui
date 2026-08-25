@@ -1,17 +1,17 @@
 <script lang='ts'>
 	import { getNodeContext } from "../context";
     import { ngState} from "../states";
-	import type { NodeContextProps , HandlePosition, HandleSource} from "../types";
+	import type { NodeContextProps , HandlePosition, HandleType} from "../types";
     let context: NodeContextProps = getNodeContext();
 
     interface HandleProps{
-      type: HandleSource
+      type: HandleType
       position: HandlePosition
     }
 
     let {type, position}: HandleProps = $props();
 </script>
-<div class={`connect-handle handle-${position} no-drag`} onmousedown={(e) => ngState?.startConnect(e, context.node, position)}></div>
+<div class={`connect-handle handle-${position} no-drag`} onmousedown={(e) => ngState?.startConnect(e, context.node, position, type)}></div>
 
 
 <style lang="scss">

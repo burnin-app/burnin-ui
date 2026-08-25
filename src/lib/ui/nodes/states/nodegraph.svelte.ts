@@ -1,4 +1,4 @@
-import type { Side, ConnectionStyle, Node, Connection, Point, EdgePoint, Size, HandlePosition } from "../types";
+import type { Side, ConnectionStyle, Node, Connection, Point, EdgePoint, Size, HandlePosition, HandleType } from "../types";
 // ---------------------------------------------------------------------------
 // Pure geometry helpers — no state, so they're plain exported functions
 // rather than methods. Import these directly wherever you need to compute
@@ -107,6 +107,7 @@ export class NodeGraph {
 
   connectingFrom = $state<string | null>(null);
   connectingFromHandle = $state<HandlePosition | null>(null);
+  connectingFromHandleType = $state<HandleType | null>(null);
   connections = $state<Connection[]>([]);
   nextConnId = $state<string>("");
   tempMouseWorld: Point = $state<Point>({ x: 0, y: 0 });
@@ -115,12 +116,13 @@ export class NodeGraph {
   // plain DOM refs — not reactive, doesn't need to be $state
   fileInputs: Record<number, HTMLInputElement> = {};
 
-  constructor(canvasEl: HTMLDivElement | null ) {
+  constructor(canvasEl: HTMLDivElement | null , nodes: Node[]) {
     this.canvasEl = canvasEl;
-    this.nodes = [
-      { id: "1", x: 100, y: 100, w: 280, h: 200, text: 'Double click to edit me!'},
-      { id: "2", x: 480, y: 260, w: 260, h: 160, text: 'Drag from the dots to connect boxes'}
-    ];
+    this.nodes = nodes;
+    // this.nodes = [
+    //   { id: "1", x: 100, y: 100, w: 280, h: 200, text: 'Double click to edit me!'},
+    //   { id: "2", x: 480, y: 260, w: 260, h: 160, text: 'Drag from the dots to connect boxes'}
+    // ];
   }
 
   // ---------- helpers ----------
@@ -150,15 +152,15 @@ export class NodeGraph {
 
   // ---------- box lifecycle ----------
   addBox() {
-    const rect = this.canvasEl?.getBoundingClientRect();
-    const cx = rect ? (rect.width / 2 - this.panX) / this.scale - 140 : 100;
-    const cy = rect ? (rect.height / 2 - this.panY) / this.scale - 100 : 100;
-    const id = crypto.randomUUID();
-    this.nodes = [
-      ...this.nodes,
-      { id: id, x: cx, y: cy, w: 280, h: 200, text: ''}
-    ];
-    this.selectedId = id;
+    // const rect = this.canvasEl?.getBoundingClientRect();
+    // const cx = rect ? (rect.width / 2 - this.panX) / this.scale - 140 : 100;
+    // const cy = rect ? (rect.height / 2 - this.panY) / this.scale - 100 : 100;
+    // const id = crypto.randomUUID();
+    // this.nodes = [
+    //   ...this.nodes,
+    //   { id: id, x: cx, y: cy, w: 280, h: 200}
+    // ];
+    // this.selectedId = id;
   }
 
   removeBox(id: string) {
@@ -176,16 +178,27 @@ export class NodeGraph {
   // ---------- panning ----------
   handleCanvasMouseDown(e: MouseEvent) {
     const target = e.target as HTMLElement;
-    if (target !== this.canvasEl && target.dataset.canvasBg === undefined) return;
-    this.isPanning = true;
-    this.selectedId = null;
-    this.panStartMouse = { x: e.clientX, y: e.clientY };
-    this.panStartOffset = { x: this.panX, y: this.panY };
+    const onBg = target === this.canvasEl || target.dataset.canvasBg !== undefined;
+
+    // middle-click (anywhere, including over a node) pans the canvas
+    if (e.button === 1) {
+      e.preventDefault();
+      this.isPanning = true;
+      this.panStartMouse = { x: e.clientX, y: e.clientY };
+      this.panStartOffset = { x: this.panX, y: this.panY };
+      return;
+    }
+
+    // left-click on empty canvas just clears the selection — no panning
+    if (e.button === 0 && onBg) {
+      this.selectedId = null;
+    }
   }
 
   // ---------- box dragging ----------
   startDragBox(e: MouseEvent, node: Node) {
     const target = e.target as HTMLElement;
+    console.log("dragging, " ,node.id);
     if (target.closest('.no-drag')) return;
     e.stopPropagation();
     this.selectedId = node.id;
@@ -204,11 +217,12 @@ export class NodeGraph {
   }
 
   // ---------- connecting two boxes ----------
-  startConnect(e: MouseEvent, node: Node, handle: HandlePosition) {
+  startConnect(e: MouseEvent, node: Node, handle: HandlePosition, fromType: HandleType) {
     e.stopPropagation();
     e.preventDefault();
     this.connectingFrom = node.id;
     this.connectingFromHandle = handle;
+    this.connectingFromHandleType = fromType;
     this.tempMouseWorld = this.worldPointFromEvent(e);
   }
 
@@ -258,6 +272,7 @@ export class NodeGraph {
     if (this.connectingFrom !== null) {
       const pt = this.worldPointFromEvent(e);
       const target = this.boxUnderPoint(pt);
+      console.log("target", target);
       if (target && target.id !== this.connectingFrom) {
         const exists = this.connections.some(
           c =>
@@ -317,4 +332,4 @@ export class NodeGraph {
 }
 
 
-export const ngState = new NodeGraph(null);
+export const ngState = new NodeGraph(null, []);

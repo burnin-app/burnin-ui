@@ -37,6 +37,10 @@ import Screenplay from "./Screenplay.svelte";
 import Images from "./Images.svelte";
 import FolderClose from "./FolderClose.svelte";
 import Save from "./Save.svelte";
+import Hierarchy from "./Hierarchy.svelte";
+import DocumentText from "./DocumentText.svelte";
+import Minimize from "./Minimize.svelte";
+import UnMaximize from "./UnMaximize.svelte";
 
 export const Icons = {
   ArrowUp,
@@ -77,7 +81,11 @@ export const Icons = {
   PlayGoToStart,
   Screenplay,
   Images,
-  Save
+  Save,
+  Hierarchy,
+  DocumentText,
+  Minimize,
+  UnMaximize
 };
 
 export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing" | "Home" | "LayoutSideBarRight" |
@@ -113,4 +121,8 @@ export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing
   | "Screenplay"
   | "Images"
   | "Save"
+  | "Hierarchy"
+  | "DocumentText"
+  | "Minimize"
+  | "UnMaximize"
   ;

@@ -43,7 +43,11 @@
         PlayGoToStart: Icons.PlayGoToStart,
         Screenplay: Icons.Screenplay,
         Images: Icons.Images,
-        Save: Icons.Save
+        Save: Icons.Save,
+        Hierarchy: Icons.Hierarchy,
+        DocumentText: Icons.DocumentText,
+        Minimize: Icons.Minimize,
+        UnMaximize: Icons.UnMaximize
     };
 
     interface IconProps extends SvgIconProp {

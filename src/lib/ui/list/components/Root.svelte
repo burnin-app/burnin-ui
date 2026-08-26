@@ -16,35 +16,41 @@
 
     let { children, selected_id = $bindable(null) , autoscroll = false}: ListRootProps = $props();
 
+
     let context = $state<ListContextProps>({
-        selected_id: selected_id,
+        get selected_id() {
+            return selected_id;
+        },
+
+        set selected_id(value) {
+            selected_id = value;
+        },
+
         filtered: null,
         search_key: "name",
         search_value: "",
         filter: false,
         scrollHTMLContainer: null
     });
-
     setListContext(context);
 
 
     $effect(() => {
-      if(autoscroll){
+        if (!autoscroll) return;
         if (!selected_id || !context.scrollHTMLContainer) return;
-          context.selected_id = selected_id;
-          queueMicrotask(() => {
-              const el = context.scrollHTMLContainer.querySelector(
-                  `[data-item-id="${CSS.escape(selected_id)}"]`
-              ) as HTMLElement | null;
 
-              el?.scrollIntoView({
-                  behavior: "auto",
-                  block: "nearest",
-                  inline: "nearest",
-              });
-          });
-      }
-    })
+        queueMicrotask(() => {
+            const el = context.scrollHTMLContainer?.querySelector(
+                `[data-item-id="${CSS.escape(selected_id)}"]`
+            ) as HTMLElement | null;
+
+            el?.scrollIntoView({
+                behavior: "auto",
+                block: "nearest",
+                inline: "nearest",
+            });
+        });
+    });
 </script>
 
 <div class="list-wrapper" bind:this={wrapper}>

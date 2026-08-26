@@ -7,12 +7,13 @@
 
 <IcoBase {...rest}>
     <rect
-        x="3.409"
-        y="3.994"
-        width="17.182"
-        height="16.085"
-        fill="none"
-        stroke={color}
-        stroke-width={strokeWidth}
+             x="6"
+             y="6"
+             width="12"
+             height="12"
+             stroke={color}
+             fill="transparent"
+             stroke-width={strokeWidth}
+         />
     />
 </IcoBase>

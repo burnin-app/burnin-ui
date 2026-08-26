@@ -10,16 +10,23 @@
         os: string;
         iconsize?: number
         onClose?: () => void;
+        onMaximize?:() => void;
+        onMinimize?:() => void;
+        isMaximized: boolean;
     }
 
-    let { children, os, icon, onClose, title, height = 30 , iconsize = 30}: TitlebarProps = $props();
-
-    function test() {
-        console.log("test");
-    }
+    let { children, os, icon, onClose, title, height = 30 , iconsize = 30, onMaximize, onMinimize, isMaximized}: TitlebarProps = $props();
 
     function handleClose(){
       onClose?.();
+    }
+
+    function handleMaximize(){
+      onMaximize?.();
+    }
+
+    function handleMinimize(){
+      onMinimize?.();
     }
 </script>
 
@@ -52,13 +59,22 @@
 {#snippet titleBarButtons(os: string)}
     <div class="titlebar-btn-wrapper">
         <IcoBtn
-            icon="Box"
+            icon="Minimize"
             size={20}
-            onclick={test}
             border={false}
             backgroundColor="transparent"
             hoveredBgColor="#444"
             fill={false}
+            onclick={handleMinimize}
+        />
+        <IcoBtn
+            icon={isMaximized ? "Box" : "UnMaximize"}
+            size={20}
+            border={false}
+            backgroundColor="transparent"
+            hoveredBgColor="#444"
+            fill={false}
+            onclick={handleMaximize}
         />
         <IcoBtn
             icon="Close"
@@ -115,7 +131,7 @@
     .titlebar-btn-wrapper {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 14px;
         height: 100%;
     }
 </style>

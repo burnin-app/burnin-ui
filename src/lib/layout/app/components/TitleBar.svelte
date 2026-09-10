@@ -15,7 +15,7 @@
         isMaximized: boolean;
     }
 
-    let { children, os, icon, onClose, title, height = 30 , iconsize = 30, onMaximize, onMinimize, isMaximized}: TitlebarProps = $props();
+    let { children, os, icon, onClose, title, height = 30 , iconsize = 30, onMaximize, onMinimize, isMaximized = $bindable()}: TitlebarProps = $props();
 
     function handleClose(){
       onClose?.();

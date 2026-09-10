@@ -189,7 +189,9 @@
                     {/each}
                     <Dropdown.Root>
                         <Dropdown.Trigger>
-                            <IcoBtn icon="Plus" fill color="#737373" />
+                            <div class="iconsize">
+                                <IcoBtn icon="Plus" fill color="#737373" size={20}/>
+                            </div>
                         </Dropdown.Trigger>
                         <Menu.Content>
                             {#each Object.keys(registry) as contentType}
@@ -208,7 +210,9 @@
                 <div class="tab-options">
                     <Dropdown.Root>
                         <Dropdown.Trigger>
-                            <IcoBtn icon="ArrowUp" fill />
+                            <div class="iconsize">
+                                <IcoBtn icon="ArrowUp" fill size={20}/>
+                            </div>
                         </Dropdown.Trigger>
                         <Menu.Content>
                             <Menu.Item
@@ -283,5 +287,13 @@
         align-items: center;
         padding: 0 4px;
         flex-shrink: 0;
+    }
+
+    .iconsize{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 22px;
+        width: 22px;
     }
 </style>

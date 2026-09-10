@@ -47,7 +47,8 @@
         Hierarchy: Icons.Hierarchy,
         DocumentText: Icons.DocumentText,
         Minimize: Icons.Minimize,
-        UnMaximize: Icons.UnMaximize
+        UnMaximize: Icons.UnMaximize,
+        PDFExport: Icons.PDFExport
     };
 
     interface IconProps extends SvgIconProp {

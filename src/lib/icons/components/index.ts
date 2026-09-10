@@ -41,6 +41,7 @@ import Hierarchy from "./Hierarchy.svelte";
 import DocumentText from "./DocumentText.svelte";
 import Minimize from "./Minimize.svelte";
 import UnMaximize from "./UnMaximize.svelte";
+import PDFExport from "./PDFExport.svelte";
 
 export const Icons = {
   ArrowUp,
@@ -85,7 +86,9 @@ export const Icons = {
   Hierarchy,
   DocumentText,
   Minimize,
-  UnMaximize
+  UnMaximize,
+  PDFExport
+
 };
 
 export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing" | "Home" | "LayoutSideBarRight" |
@@ -125,4 +128,5 @@ export type IconNames = "ArrowUp" | "Close" | "Plus" | "Search" | "AlarmBellRing
   | "DocumentText"
   | "Minimize"
   | "UnMaximize"
+  | "PDFExport"
   ;

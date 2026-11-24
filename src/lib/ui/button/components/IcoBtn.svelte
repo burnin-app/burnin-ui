@@ -32,6 +32,7 @@
         size,
         fill = false,
         strokeWidth = 1.5,
+        padding = 0,
         ...rest
     }: IcoBtnProps = $props();
 
@@ -73,7 +74,7 @@
     onfocus={() => (hovered = true)}
     onblur={() => (hovered = false)}
     class="iconBtn-wrapper"
-    style={` width: ${size}px; height:${size}px; ${border ? "" : "border: none"}; background-color: ${output_bg_color};`}
+    style={` width: ${size}px; height:${size}px; padding: ${padding ?? 0}px; ${border ? "" : "border: none"}; background-color: ${output_bg_color};`}
     {...rest}
 >
     <IconI

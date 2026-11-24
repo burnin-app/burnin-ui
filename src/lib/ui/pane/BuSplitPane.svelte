@@ -113,39 +113,6 @@
         }
         return false;
     }
-    // function splitPane(
-    //     node: BuPane,
-    //     targetId: string,
-    //     direction: "horizontal" | "vertical",
-    // ): boolean {
-    //     if (node.id === targetId) {
-    //         const preserved: BuPane = {
-    //             id: crypto.randomUUID(),
-    //             type: "leaf",
-    //             direction: "horizontal",
-    //             panes: [],
-    //             tabs: node.tabs,
-    //             activeTabId: node.activeTabId,
-    //         };
-
-    //         // NEW: Copy state from current pane to new pane
-    //         const newLeaf = createEmptyLeaf();
-    //         if (node.tabs.length > 0) {
-    //             newLeaf.tabs[0].state = { ...node.tabs[0].state };
-    //         }
-
-    //         node.type = "split";
-    //         node.direction = direction;
-    //         node.panes = [preserved, newLeaf];
-    //         node.tabs = [];
-    //         node.activeTabId = "";
-    //         return true;
-    //     }
-    //     for (const child of node.panes) {
-    //         if (splitPane(child, targetId, direction)) return true;
-    //     }
-    //     return false;
-    // }
 
     function closePane(node: BuPane, targetId: string): boolean {
         const index = node.panes.findIndex((child) => child.id === targetId);
@@ -190,7 +157,7 @@
                     <Dropdown.Root>
                         <Dropdown.Trigger>
                             <div class="iconsize">
-                                <IcoBtn icon="Plus" fill color="#737373" size={20}/>
+                                <IcoBtn icon="PlusNew" fill color="#737373" size={20} />
                             </div>
                         </Dropdown.Trigger>
                         <Menu.Content>
@@ -211,7 +178,7 @@
                     <Dropdown.Root>
                         <Dropdown.Trigger>
                             <div class="iconsize">
-                                <IcoBtn icon="ArrowUp" fill size={20}/>
+                                <IcoBtn icon="PlusNew" fill size={20}/>
                             </div>
                         </Dropdown.Trigger>
                         <Menu.Content>
@@ -289,11 +256,20 @@
         flex-shrink: 0;
     }
 
-    .iconsize{
+    .iconsize {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 22px;
-        width: 22px;
+        height: 100%;
     }
+
+    .iconBtn-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        padding: 0;
+    }
+
 </style>
